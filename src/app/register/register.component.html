@@ -1,0 +1,38 @@
+
+<div class="container">
+    <div class="img-logo">
+    <img src="../../assets/imagen logotipes.jpg" alt="organizator">
+    </div>
+    <div class="container-register">
+    <h2 class="title">Organizator</h2>
+    <div class="register">
+        <form class="custom-form"  [formGroup]="registerForm">
+            <h1>Registro</h1>
+            <input
+                type="text"
+                formControlName="usu_nombre"
+                name="nombre"
+                placeholder="Nombre completo"
+                required="required"
+            />
+            <input
+                type="email"
+                formControlName="usu_email"
+                name="email"
+                placeholder="Correo electrónico"
+                required="required"
+            />
+            <input
+                type="password"
+                formControlName="usu_contraseña"
+                name="contraseña"
+                placeholder="Contraseña"
+                required="required"
+            />
+        <button type="submit" (click)="RegisterUser()">Registrarse</button>
+        <button class="login-btn" type="button" (click)="irAInicioSesion()">Iniciar Sesión</button>
+        </form>
+    </div>
+    </div>
+</div>
+

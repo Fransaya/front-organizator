@@ -1,0 +1,112 @@
+/*ESTILOS DE LOGUI*/
+*{
+    box-sizing: border-box;
+    }
+    html,
+    body {
+    background: #ecf0f3;
+    }
+    h1 {
+    margin: 0;
+    padding: 0;
+    }
+    .container {
+        display: flex;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f4f4f4; /* Fondo claro */
+    }
+
+    .container-login{
+        width: 800px;
+        margin-top: 20px;
+    }
+    .img-logo {
+        text-align: center;
+    }
+
+    .img-logo img {
+        max-width: 150px; /* Ajusta el tamaño de la imagen según tus necesidades */
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-radius: 10px; /* Ajusta el radio de borde según tus preferencias */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+    .title{
+        font-size: 3rem;
+        margin: 30px;
+        text-align: center;
+        margin: 20px;
+    }
+    .custom-form {
+    min-width: 500px;
+    max-width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    color: black;
+    margin-top: 2rem;
+    }
+    .custom-form input {
+    display: block;
+    margin: 2rem 0;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: none;
+    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px
+        rgba(0, 0, 0, 0.1);
+    border: 0 none;
+    background: #ebf5fc;
+    }
+    .custom-form button {
+    
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: none;
+    font-size: 0.875rem;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: var(--color-detalles);
+    width: 40%;
+    margin-left: 50px;
+    padding: 0.875rem 0.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+    cursor: pointer;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

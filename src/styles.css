@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+
+:root {
+    --primary-color: #81C16A;
+    --color-detalles: #bcd8c1;
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --color-resaltar: #F5F5DC
+}
+/* 
+Verde Medio Oscuro (principal): #006400
+Gris (para texto): #595959
+Azul Suave (para detalles o acentos): #A0C1D1
+Beige (para resaltar): #F5F5DC */

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="img-logo">
+        <img src="../../assets/imagen logotipes.jpg" alt="organizator">
+    </div>
+    <div class="container-login">
+        <h2 class="title">Organizator</h2>
+        <div class="login">
+            <form class="custom-form"  [formGroup]="loginForm" (ngSubmit)="LoginUser()">
+                <h1>Inicio Sesión</h1>
+                <input
+                    type="email"
+                    formControlName="usu_correo"
+                    name="email"
+                    placeholder="Email"
+                    required="required"
+                    />
+                    <input
+                    type="password"
+                    formControlName="usu_contraseña"
+                    name="contraseña"
+                    placeholder="contraseña"
+                    required="required"
+                    />
+                <button type="submit">Iniciar Sesión</button>
+                <button class="register-btn" type="button" (click)="register()">Registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
