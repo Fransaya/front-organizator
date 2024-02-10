@@ -1,0 +1,65 @@
+/* sidebar.component.css */
+
+.sidebar {
+  width: 80px; /* Ancho inicial de la barra lateral */
+  height: 100%;
+  background-color: #333; /* Color de fondo de la barra lateral */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30vh;
+  padding: 20px 0;
+  transition: width 0.2s ease; /* Agregado: transición suave para el ancho */
+  border-radius: 15px;
+  
+}
+
+.expanded {
+  width: 200px; /* Ancho expandido de la barra lateral */
+}
+
+h2 {
+  margin: 0;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 20px; /* Tamaño del ícono */
+}
+
+button {
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px; /* Tamaño del ícono */
+}
+
+/* Añadido: Ajuste de estilos para íconos específicos */
+.fa-bars,
+.fa-house,
+.fa-calendar-days,
+.fa-sticky-note,
+.fa-tasks,
+.fa-money-bill {
+  color: white;
+  margin-bottom: 10px; /* Espaciado inferior entre los botones */
+}
+
+.expanded h2 {
+  display: block; /* Muestra el texto solo cuando está expandida */
+}
+
+span{
+  margin: 10px;
+}
+/* Añadido: Estilos para mostrar u ocultar ícono según el estado de expansión */
+:not(.expanded) button span {
+  
+  display: none;
+}

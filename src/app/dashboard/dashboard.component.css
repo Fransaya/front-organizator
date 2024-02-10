@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+}
+
+.title{
+    display: flex;
+    position: relative;
+    margin-top: 10px;
+}

@@ -1,0 +1,147 @@
+.container-notas {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--gray-color);
+}
+
+.sidebar {
+  overflow-y: auto; /* Esto permite el desplazamiento vertical */
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.notas {
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre notas */
+  margin-top: 5px;
+  padding: 10px;
+  overflow-y: auto; /* Esto permite el desplazamiento vertical */
+  background-color: rgba(250, 250, 250, 0.7); /* Blanco con transparencia */
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title-todasNotas{
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+.nota {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: var(--black-color);
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--white-color);
+}
+
+.nota .botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+}
+
+.nota button {
+  align-self: center;
+  width: 150px;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-family);
+  background-color: var(--green-color);
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+
+
+.nota button:hover {
+  font-family: var(--font-family);
+  color: var(--black-color);
+  background-color: var(--white-color);
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 45%;
+  margin-top: 50px;
+  margin-right: 10%;
+  max-width: 500px;
+  overflow-y: auto; /* Esto permite el desplazamiento vertical */
+  background-color: rgba(250, 250, 250, 0.7); /* Blanco con transparencia */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.crear-nota-title{
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+.titulo {
+  font-family: var(--font-family);
+    font-weight: bold;
+}
+.descripcion{
+  font-family: var(--font-family);
+  font-weight: bold;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(250, 250, 250, 0.7); /* Blanco con transparencia */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-nota {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px; /* Ajusta este valor según tus necesidades */
+}
+
+.form-nota div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-nota input,
+.form-nota textarea {
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-family);
+}
+
+.form-nota button {
+  align-self: center;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--green-color);
+  color: var(--white-color);
+  cursor: pointer;
+  width: 120px;
+  font-family: var(--font-family);
+}
+
+.form-nota button:hover {
+  background-color: var(--black-color);
+}

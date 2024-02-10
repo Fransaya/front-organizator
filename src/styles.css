@@ -1,14 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+/* styles.css */
 
+/* styles.css */
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
 
 
 
 :root {
-    --primary-color: #81C16A;
-    --color-detalles: #bcd8c1;
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --color-resaltar: #F5F5DC
+    /* * COLORES PRINCIPALES APLICACION*/
+    --green-color: #227050;
+    --beige-color: #E6D39E;
+    --white-color:#FAFAFA;
+    --black-color: #2F3033;
+    --gray-color:  #808080; /* Gris */
+    --blue-color:  #0000FF; /* Azul */
+
+    --font-family:'Roboto', sans-serif;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Deshabilita el desplazamiento vertical */
 }
 /* 
 Verde Medio Oscuro (principal): #006400

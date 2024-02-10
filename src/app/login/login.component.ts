@@ -5,6 +5,13 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { CommonModule, NgIf } from '@angular/common';
 
+
+//* IMPORTACION DE SERVICIO PARA LOGIN
+import { AuthService } from '../../Core/Services/auth/auth.service';
+
+//* IMPORTACION DE SWAL PARA ALERTA
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   standalone:true,
@@ -15,7 +22,7 @@ import { CommonModule, NgIf } from '@angular/common';
 })
 export class LoginComponent  {
   
-  constructor(private router: Router, private formBuilder: FormBuilder){
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService){
     this.inicioFom();
   };
 
@@ -28,9 +35,35 @@ export class LoginComponent  {
     })
   }
 
+
+
   //* FUNCION DE LOGUIN USER
   public LoginUser():void {
     console.log("valores del formulario", this.loginForm.value)
+    //* EXTRAIGO VALORES DE CORREO Y CONTRASEÑA DEL FORMULARIO
+    const correo: string = this.loginForm.get("usu_correo")!.value;
+    const contraseña: string = this.loginForm.get("usu_contraseña")!.value;
+    //* VERIFICO SI EL FORMULARIO ES VALIDO
+    if(this.loginForm.valid){
+      this.authService.login(correo,contraseña).subscribe({
+        next:(response)=>{
+          console.log("respuesta del servidor", response)
+          //* guardo el token en el local storage
+          localStorage.setItem('token',response.data.token);
+          localStorage.setItem('sesion', response.data.id)
+          if(response.succes){
+            this.router.navigate(['/dashboard'])
+          }
+          
+        },
+        error:(err)=>{
+
+        }
+      })
+    }else{
+      console.log("formulario ivalido")
+      Swal.fire("Formulario Invalido", "Complete los datos del formulario","error")
+    }
 
     //* reseteo del formulario
     // this.loginForm.reset();

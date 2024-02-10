@@ -6,7 +6,7 @@
         <h2 class="title">Organizator</h2>
         <div class="login">
             <form class="custom-form"  [formGroup]="loginForm" (ngSubmit)="LoginUser()">
-                <h1>Inicio Sesión</h1>
+                <h1 class="inicio-sesion">Inicio Sesión</h1>
                 <input
                     type="email"
                     formControlName="usu_correo"
@@ -21,7 +21,7 @@
                     placeholder="contraseña"
                     required="required"
                     />
-                <button type="submit">Iniciar Sesión</button>
+                <button type="submit" >Iniciar Sesión</button>
                 <button class="register-btn" type="button" (click)="register()">Registrar</button>
             </form>
         </div>
