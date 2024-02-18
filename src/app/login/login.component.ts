@@ -5,6 +5,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { CommonModule, NgIf } from '@angular/common';
 
+//*MODULOS EXTERNOS
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 //* IMPORTACION DE SERVICIO PARA LOGIN
 import { AuthService } from '../../Core/Services/auth/auth.service';
@@ -12,10 +16,11 @@ import { AuthService } from '../../Core/Services/auth/auth.service';
 //* IMPORTACION DE SWAL PARA ALERTA
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-login',
   standalone:true,
-  imports:[CommonModule,FormsModule,ReactiveFormsModule,NgIf],
+  imports:[CommonModule,FormsModule,ReactiveFormsModule,NgIf,MatCardModule,MatInputModule,MatFormFieldModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   

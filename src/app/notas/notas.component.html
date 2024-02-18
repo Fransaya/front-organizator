@@ -1,39 +1,45 @@
 
 <div class="container-notas">
+    
     <div class="sidebar">
         <app-sidebar></app-sidebar>
     </div>
     <div class="notas">
         <h2 class="title-todasNotas">Todas las notas</h2>
         <div class="notas-traidas">
-            <div  *ngIf="notas.length>0" class="mostrar-notas">
-                <div class="nota" *ngFor="let nota of notas">
-                    <!-- Contenido de la nota aquí -->
-                    <p class="title-notas">{{nota.titulo}}</p>
-                    <p class="contenido-notas">{{notas.contenido}}</p>
-                    <p class="fecha-notas">{{formateDate(notas.createdAt)}}</p>
-                    <div class="botones">
-                        <button type="button" (click)="modificarNota(nota.id)">Modificar</button>
-                        <button type="button" (click)="eliminarNota(nota.id)">Eliminar</button>
-                    </div>
-                </div>
+            <div *ngIf="notas.length>0" class="mostrar-notas">
+                <div *ngFor="let nota of notas">
+                    <p-card header="{{nota.titulo}}" subheader="{{formateDate(nota.createdAt)}}" class="card-nota">
+                        <p>
+                            {{nota.contenido}}
+                        </p>
+                        <ng-template pTemplate="footer" class="footer-btn">
+                            <p-button type="button" (click)="modificarNota(nota.id,nota.titulo, nota.contenido)" label="Modificar" styleClass="p-button-success" [rounded]="true"></p-button>
+                            <p-button type="button" (click)="eliminarNota(nota.id)" label="Eliminar"  styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"  [rounded]="true"></p-button>
+                        </ng-template>
+                    </p-card>
+                </div>                
             </div>
         </div>
     </div>
+    <h1 class="title-notas">Notas Rapidas</h1>
     <div class="formulario">
-        <!-- Tu formulario aquí -->
-        <h3 class="crear-nota-title">Crear Nota</h3>
-        <form class="form-nota" [formGroup]="notaForm" (ngSubmit)="crearNota()">
-            <div>
-                <label for="titulo" class="titulo">Título</label>
-                <input type="text" id="titulo" formControlName="titulo" required>
-            </div>
-            <div>
-                <label for="descripcion" class="descripcion">Descripción</label>
-                <textarea id="descripcion" formControlName="descripcion" required></textarea>
-            </div>
-            <button type="submit" class="btn-nota">Crear Nota</button>
-        </form>
+        <p-card header="Crear Nota" class="card-container">
+            <form class="form-nota" [formGroup]="notaForm">
+                <div>
+                    <label for="titulo" class="contenido">Título</label>
+                    <input type="text" id="titulo" formControlName="titulo" required>
+                </div>
+                <div>
+                    <label for="contenido" class="contenido">Contenido</label>
+                    <textarea id="contenido" formControlName="contenido" required></textarea>
+                </div>
+            </form>
+            <ng-template pTemplate="footer">
+                <p-button label="Guardar" [rounded]="true"  (onClick)="crearNota()" styleClass="p-button-success" class="btn-nota"></p-button>
+                <p-button label="Cancelar" [rounded]="true" styleClass="p-button-secondary" class="btn-nota"></p-button>
+            </ng-template>
+        </p-card>
     </div>
 </div>
 

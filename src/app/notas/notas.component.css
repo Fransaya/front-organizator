@@ -1,3 +1,4 @@
+
 .container-notas {
   display: flex;
   justify-content: space-between;
@@ -6,6 +7,7 @@
   box-sizing: border-box;
   background-color: var(--gray-color);
 }
+
 
 .sidebar {
   overflow-y: auto; /* Esto permite el desplazamiento vertical */
@@ -23,62 +25,54 @@
   overflow-y: auto; /* Esto permite el desplazamiento vertical */
   background-color: rgba(250, 250, 250, 0.7); /* Blanco con transparencia */
   border-radius: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0.2, 0.2, 0.2, 0.2);
 }
 
 .title-todasNotas{
   text-align: center;
+  color: var(--black-color);
   font-family: var(--font-family);
 }
 
-.nota {
+.card-nota{
   display: flex;
   flex-direction: column;
   padding: 20px;
   margin-bottom: 10px;
-  background-color: var(--black-color);
+  background-color: var(--green-color);
   border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: var(--white-color);
+  box-shadow: 0 2px 4px rgba(1, 1, 1, 1);
+  color: var(--black-color);
 }
 
-.nota .botones {
+.card-container{
+  width: 100%;
+}
+
+.card-nota .botones {
   display: flex;
   justify-content: center;
   gap: 10px; 
 }
 
-.nota button {
-  align-self: center;
-  width: 150px;
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-family: var(--font-family);
-  background-color: var(--green-color);
-  color: var(--white-color);
-  cursor: pointer;
-}
 
-
-
-.nota button:hover {
-  font-family: var(--font-family);
+.title-notas{
+  position: absolute;
+  right: 21%;
   color: var(--black-color);
-  background-color: var(--white-color);
+  font-family: var(--font-family);
 }
 
 .formulario {
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: 45%;
-  margin-top: 50px;
+  height: 60%;
+  margin-top: 150px;
   margin-right: 10%;
   max-width: 500px;
   overflow-y: auto; /* Esto permite el desplazamiento vertical */
-  background-color: rgba(250, 250, 250, 0.7); /* Blanco con transparencia */
+  background-color: var(--green-color) !important; /* Blanco con transparencia */
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -91,7 +85,7 @@
   font-family: var(--font-family);
     font-weight: bold;
 }
-.descripcion{
+.contenido{
   font-family: var(--font-family);
   font-weight: bold;
 }
@@ -129,19 +123,8 @@
   font-family: var(--font-family);
 }
 
-.form-nota button {
-  align-self: center;
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: var(--green-color);
-  color: var(--white-color);
-  cursor: pointer;
-  width: 120px;
-  font-family: var(--font-family);
-}
 
-.form-nota button:hover {
-  background-color: var(--black-color);
+
+.btn-nota{
+  margin-left: 20px;
 }

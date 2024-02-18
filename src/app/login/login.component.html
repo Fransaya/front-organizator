@@ -3,28 +3,26 @@
         <img src="../../assets/imagen logotipes.jpg" alt="organizator">
     </div>
     <div class="container-login">
-        <h2 class="title">Organizator</h2>
-        <div class="login">
-            <form class="custom-form"  [formGroup]="loginForm" (ngSubmit)="LoginUser()">
-                <h1 class="inicio-sesion">Inicio Sesión</h1>
-                <input
-                    type="email"
-                    formControlName="usu_correo"
-                    name="email"
-                    placeholder="Email"
-                    required="required"
-                    />
-                    <input
-                    type="password"
-                    formControlName="usu_contraseña"
-                    name="contraseña"
-                    placeholder="contraseña"
-                    required="required"
-                    />
-                <button type="submit" >Iniciar Sesión</button>
-                <button class="register-btn" type="button" (click)="register()">Registrar</button>
-            </form>
-        </div>
+        <mat-card class="centered-form">
+            <mat-card-header><mat-card-title><h2 class="title">Organizator</h2></mat-card-title></mat-card-header>
+            <mat-card-content>
+                <div class="login">
+                    <form class="custom-form"  [formGroup]="loginForm" (ngSubmit)="LoginUser()">
+                        <mat-form-field appearance="fill" class="input large-input">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" formControlName="usu_correo" name="email" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="input large-input">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput type="password" formControlName="usu_contraseña" name="contraseña" required>
+                        </mat-form-field>
+                        <mat-card-actions><button type="submit" >Iniciar Sesión</button>
+                            <button class="register-btn" type="button" (click)="register()">Registrar</button>
+                        </mat-card-actions>
+                    </form>
+                </div>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
 

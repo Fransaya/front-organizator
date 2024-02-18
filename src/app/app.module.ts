@@ -16,6 +16,15 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { NotasComponent } from './notas/notas.component';
 import { GastosComponent } from './gastos/gastos.component';
 import { TareasComponent } from './tareas/tareas.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DataViewModule } from 'primeng/dataview';
+import { CardModule } from 'primeng/card';
+import {ButtonModule} from 'primeng/button';
+import { ModificarNotaModalComponent } from './notas/modal-modificar-nota/modificar-nota-modal/modificar-nota-modal.component';
+import { ModificarTareaModalComponent } from './tareas/modal-modificar-tarea/modificar-tarea-modal/modificar-tarea-modal.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -26,20 +35,28 @@ import { TareasComponent } from './tareas/tareas.component';
     NotasComponent,
     GastosComponent,
     TareasComponent,
+    ModificarNotaModalComponent,
+    ModificarTareaModalComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataViewModule,
+    CardModule,
+    ButtonModule,
+    
   ],
   providers: [
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true
-    }
+    },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

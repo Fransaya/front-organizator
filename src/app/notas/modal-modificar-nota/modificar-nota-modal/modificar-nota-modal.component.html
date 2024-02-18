@@ -1,0 +1,19 @@
+
+<div class="formulario">
+    <p-card header="Modificar Nota" class="card-container">
+        <form class="form-nota" [formGroup]="form">
+            <div>
+                <label for="titulo" class="titulo">Título</label>
+                <input type="text" id="titulo" formControlName="titulo" required>
+            </div>
+            <div>
+                <label for="contenido" class="contenido">Descripción</label>
+                <textarea id="contenido" formControlName="contenido" required></textarea>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <p-button label="Guardar" [rounded]="true"  (onClick)="modificarNota()" styleClass="p-button-success" class="btn-nota"></p-button>
+            <p-button label="Cancelar" [rounded]="true" (onClick)="cancelarNota()" styleClass="p-button-secondary" class="btn-nota"></p-button>
+        </ng-template>
+    </p-card>
+</div>
