@@ -3,7 +3,7 @@ export enum endopoint {
 
     //*USUARIO:
     getUsuarios='/usuarios/getUsuarios',
-    createUsuario='/usuarios/postUsuario',
+    createUsuario='/usuarios/register',
     loginUsuario='/usuarios/login',
     logoutUsuario='/usuarios/logout',
 

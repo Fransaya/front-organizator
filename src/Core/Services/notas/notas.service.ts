@@ -29,6 +29,7 @@ export class NotasService {
     
     //? OBTENGO EL TOKEN EN HEADER DEL AUTH SERVICE
     const opciones = {headers:this.authService.obtenerHears()};
+    console.log("valores de opciones", opciones);
     //? ENVIO DATOS POR BODY
     const body={titulo, contenido}
     
@@ -36,7 +37,10 @@ export class NotasService {
   };
 
   public modificarNota(id:number, titulo:string, contenido:string){
-
+    const urlApi= environment.apiUrl + endopoint.updateNotas;
+    const params=new HttpParams().set("notaId",id);
+    const body={titulo, contenido}
+    return this.http.patch(urlApi,body, {params})
   };
 
   public eliminarNota(id:number){

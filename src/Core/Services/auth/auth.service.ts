@@ -34,6 +34,14 @@ export class AuthService {
     };
     return this.http.post(urlApi, body);
   };
+
+  //? METODO DE REGISTER
+  public register(usuario:string, correo:string, contraseña:string){
+    const urlApi=environment.apiUrl + endopoint.createUsuario;
+    const body= {usuario, correo,contraseña};
+
+    return this.http.post(urlApi, body);
+  }
   //? FUNCION PARA DELOGUEAR
   public logout(token:string):Observable<any>{
     const urlApi= environment.apiUrl + endopoint.logoutUsuario;
