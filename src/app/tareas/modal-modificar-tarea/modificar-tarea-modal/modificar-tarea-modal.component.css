@@ -1,0 +1,38 @@
+.form-crear-tarea {
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.form-tarea {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-tarea label {
+    text-align: left; 
+}
+
+
+select,
+input {
+    width: 100%; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+/* Estilos para el botón */
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.p-button {
+    flex: 1;
+}

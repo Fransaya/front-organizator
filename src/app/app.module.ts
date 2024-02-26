@@ -22,6 +22,11 @@ import { CardModule } from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import { ModificarNotaModalComponent } from './notas/modal-modificar-nota/modificar-nota-modal/modificar-nota-modal.component';
 import { ModificarTareaModalComponent } from './tareas/modal-modificar-tarea/modificar-tarea-modal/modificar-tarea-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ToastModule } from 'primeng/toast';
+import { ModalCreateGastoComponent } from './gastos/modal-create-gasto/modal-create-gasto/modal-create-gasto.component';
+import { ModalModificarGastoComponent } from './gastos/modal-modificar-gasto/modal-modificar-gasto/modal-modificar-gasto.component';
+
 
 
 
@@ -37,7 +42,8 @@ import { ModificarTareaModalComponent } from './tareas/modal-modificar-tarea/mod
     TareasComponent,
     ModificarNotaModalComponent,
     ModificarTareaModalComponent,
-    
+    ModalCreateGastoComponent,
+    ModalModificarGastoComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ import { ModificarTareaModalComponent } from './tareas/modal-modificar-tarea/mod
     DataViewModule,
     CardModule,
     ButtonModule,
-    
+    MatDialogModule,
+    ToastModule
   ],
   providers: [
     {

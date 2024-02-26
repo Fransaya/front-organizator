@@ -1,0 +1,192 @@
+.container-task {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-color);
+    overflow-y: auto;
+}
+
+.content-container {
+    display: flex;
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto; /* Centra el contenedor */
+}
+
+.title {
+    text-align: center;
+    font-family: var(--font-family);
+    color: var(--white-color);
+}
+
+.sidebar {
+    position: absolute;
+    overflow-y: auto;
+    border-radius: 10px;
+    left:20px;
+    top: 20px;
+}
+
+.tareas {
+    flex: 1; /* Ocupa el espacio restante */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.tareas-pendientes{
+    flex-direction: row;
+}
+.mostrarTareas{
+    border-radius: 15px;
+    margin: 20px;    
+}
+
+.mostrarTareas table {
+    box-shadow: 0 10px 15px rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+}
+
+
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+.container-header{
+    display:flex;
+    justify-content: center;
+    
+}
+.t-head{
+    background-color: var(--green-color);
+    color: var(--white-color);
+    font-size: 16px;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+}
+.t-row-head,
+.t-row-body {
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.th,
+.td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.t-body{
+    background-color: var(--white-color);
+}
+
+.t-row-body:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.modificar{
+    margin-right: 8px;
+}
+
+.contener-btns{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contener-btns p-button{
+    margin: 20px;
+}
+
+
+.tareas-pendientes {
+    margin: auto;
+}
+
+.add-task{
+    position: relative;
+    width: 100px;
+    margin: 5px;
+}
+
+
+.formTareas{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+    background-color: var(--green-color);
+    border-radius: 15px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 20px;
+}
+
+.form-crear-tarea {
+    width: 70%;
+    position: relative;
+    background-color: var(--white-color);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-tarea {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilos para las etiquetas (labels) */
+label {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+  /* Estilos para los selectores y los inputs */
+select,
+input {
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.tareas-finalizadas{
+    text-align: center;
+    color: var(--white-color);
+}
+
+.mostrar-notas {
+    display: flex; /* Usa un layout flexible */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea si no hay suficiente espacio */
+    justify-content: space-between;
+    gap: 15px;  
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-nota {
+    flex: 0 0 calc(33.33% - 10px);
+    margin: 2px;
+    max-width: 350px;
+    max-height: 150px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+

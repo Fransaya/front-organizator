@@ -1,0 +1,19 @@
+<div class="form-crear-tarea">
+    <h2 class="title">Modificar Tarea</h2>
+    <form class="form-tarea" [formGroup]="form" (ngSubmit)="modificarTarea()">
+        <label for="prioridad" class="prioridad">Prioridad</label>
+        <select name="prioridad" id="prioridad" formControlName="prioridad">
+            <option *ngFor="let prioridad of prioridades" [ngValue]="prioridad.id" >{{prioridad.nombre}}</option>
+        </select>
+        <label for="descripcion" class="descripcion">Descripción</label>
+        <input type="text" name="descripcion" id="descripcion" formControlName="descripcion">
+        <label for="estado">Estado</label>
+        <select name="estado" id="estado" formControlName="estado">
+            <option *ngFor="let estado of estados" [ngValue]="estado.id">{{estado.nombre}}</option>
+        </select>
+        <div class="button-container">
+            <p-button type="submit" label="Modificar"></p-button>
+            <p-button type="button" label="Cancelar" (onClick)="cancelar()"></p-button>
+        </div>
+    </form>
+</div>
