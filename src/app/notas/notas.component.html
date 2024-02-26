@@ -1,6 +1,6 @@
 
 <div class="container-notas">
-    
+    <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
     <div class="sidebar">
         <app-sidebar></app-sidebar>
     </div>
@@ -32,7 +32,7 @@
                 </div>
                 <div>
                     <label for="contenido" class="contenido">Contenido</label>
-                    <textarea id="contenido" formControlName="contenido" required></textarea>
+                    <textarea id="contenido" formControlName="contenido" class="text-area" required></textarea>
                 </div>
             </form>
             <ng-template pTemplate="footer">
