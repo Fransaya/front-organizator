@@ -27,8 +27,8 @@ export enum endopoint {
     deleteEvento='/calendario/deleteEvento',
 
     //* GASTOS
-    getGastos='gastos/getGastos',
-    postGasto='gastos/postGastos',
-    updateGasto='gastos/patchGastos',
-    deletGasto='gastos/deleteGastos',
+    getGastos='/gastos/getGastos',
+    postGasto='/gastos/postGastos',
+    updateGasto='/gastos/patchGastos',
+    deletGasto='/gastos/deleteGastos',
 };

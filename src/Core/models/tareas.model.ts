@@ -3,5 +3,7 @@ export interface Tarea{
     prioridad: number,
     descripcion: string,
     estado:number,
-    id_usuario:number
+    id_usuario:number,
+    createdAt: string;
+    updatedAt: string;
 }

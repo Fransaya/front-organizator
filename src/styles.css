@@ -20,7 +20,7 @@
     --beige-color: #E6D39E;
     --white-color:#FAFAFA;
     --black-color: #2F3033;
-    --gray-color:  #BAC2B3; /* Gris */
+    --gray-color:  #252625; 
     --blue-color:  #0000FF; /* Azul */
 
     --font-family:'Roboto', sans-serif;
@@ -30,12 +30,28 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Deshabilita el desplazamiento vertical */
+    overflow: auto; 
+    font-family: var(--font-family);/* Deshabilita el desplazamiento vertical */
 }
+
+.p-button {
+    color: var(--white-color);
+    background: var(--green-color);
+    border: 1px solid var(--black-color);
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 6px;
+}
+
+.p-button:hover{
+    color: var(--white-color);
+    background-color: #227040;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* 
 Verde Medio Oscuro (principal): #006400
 Gris (para texto): #595959
 Azul Suave (para detalles o acentos): #A0C1D1
 Beige (para resaltar): #F5F5DC */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
