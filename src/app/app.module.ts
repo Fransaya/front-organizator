@@ -20,6 +20,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DataViewModule } from 'primeng/dataview';
 import { CardModule } from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
+import { TableModule } from 'primeng/table';
 import { ModificarNotaModalComponent } from './notas/modal-modificar-nota/modificar-nota-modal/modificar-nota-modal.component';
 import { ModificarTareaModalComponent } from './tareas/modal-modificar-tarea/modificar-tarea-modal/modificar-tarea-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -55,7 +56,8 @@ import { ModalModificarGastoComponent } from './gastos/modal-modificar-gasto/mod
     CardModule,
     ButtonModule,
     MatDialogModule,
-    ToastModule
+    ToastModule,
+    TableModule
   ],
   providers: [
     {

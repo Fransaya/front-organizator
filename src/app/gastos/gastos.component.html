@@ -1,1 +1,41 @@
-<p>gastos works!</p>
+<section class="container">
+    <div class="container-gastos">
+        <h1 class="title-gastos">Gastos</h1>
+        <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+        <div class="sidebar">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="container-btnCrear">
+            <button type="button" class="mostrar-modal" (click)="postGasto()"><span class="pi pi-plus add-task"></span></button>
+        </div>
+        <div class="table-gastos" >
+            <table class="table">
+                <thead class="t-head">
+                    <tr class="t-row-head">
+                        <th class="th">Categoria</th>
+                        <th class="th">Descripción</th>
+                        <th class="th">Importe</th> 
+                        <th class="th">Fecha</th>
+                        <th class="th"></th>
+                        <th class="th"></th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                    <ng-container *ngFor="let gasto of gastos" class="ng-conteiner">
+                        <tr class="t-row-body">
+                            <td class="td">{{gasto.categoria}}</td>
+                            <td class="td">{{gasto.descripcion}}</td>
+                            <td class="td">{{gasto.monto}}</td>
+                            <td class="td">{{gasto.fecha_gasto}}</td>
+                            <td class="td"><p-button class="modificar" (onClick)="modificarGasto(gasto.id,gasto.categoria,gasto.descripcion,gasto.monto,gasto.fecha_gasto)"><span class="pi pi-pencil"></span></p-button></td>
+                            <td class="td"><p-button class="eliminar" (onClick)="deleteGasto(gasto.id)"><span class="pi pi-trash"></span></p-button></td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    
+
+</section>

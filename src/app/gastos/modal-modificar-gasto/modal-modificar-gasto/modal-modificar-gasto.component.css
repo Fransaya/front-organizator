@@ -1,0 +1,72 @@
+.container-inf{
+    background-color: var(--white-color);
+    border-radius: 10px;
+}
+.create-gastos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--black-color);
+    color: white;
+    box-shadow: 0 10px 20px 5px linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.25) 100%);
+}
+
+.container-gasto {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+.formGasto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-group {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.label-importe, .label-fecha {
+    display: block;
+    margin-bottom: 5px;
+}
+.input-text, .input-number, .input-date {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.input-number {
+    text-align: right;
+}
+
+.container-btn-create{
+    display: flex;
+    margin-top: 15px;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    
+}
+
+.create-gasto-title{
+    font-size: 30px;
+    margin: 10px;
+}
+
+label{
+    font-size: 18px;
+    font-family: var(--font-family);
+}
+input{
+    font-size: 15px;
+    font-family: var(--font-family);
+    color: var(--black-color);
+}

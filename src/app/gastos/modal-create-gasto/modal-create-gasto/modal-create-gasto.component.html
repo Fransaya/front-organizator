@@ -1,0 +1,30 @@
+<section class="container-inf">
+    <div class="create-gastos" >
+        <div class="container-gasto">
+            <h2 class="create-gasto-title">Nuevo Gasto</h2>
+            <form [formGroup]="gastoForm" class="formGasto" (ngSubmit)="enviarDatos()">
+            <div class="form-group">
+                <label for="categoria" class="categoria-label">Categoria</label>
+                <input type="text" id="categoria" class="input-text" formControlName="categoria" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="descripcion" class="descripcion-label">Descripción</label>
+                <input type="text" id="descripcion" class="input-text" formControlName="descripcion" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="importe" class="label-importe">Monto</label>
+                <input type="number" id="importe" class="input-number" formControlName="monto" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="fecha_gasto" class="label-fecha">Fecha</label>
+                <input type="date" id="fecha_gasto" class="input-date" formControlName="fecha_gasto" autocomplete="off">
+            </div>
+            <div class="container-btn-create">
+                <p-button type="submit" label="Crear"></p-button>
+                <p-button type="button" label="Cancelar" (onClick)="cancelarGasto()"></p-button>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>
+

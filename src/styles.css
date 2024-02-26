@@ -16,12 +16,11 @@
 
 :root {
     /* * COLORES PRINCIPALES APLICACION*/
-    --green-color: #227050;
-    --beige-color: #E6D39E;
+    --green-color: #C6D8D3;
+    --beige-color: #C6D8D3;
     --white-color:#FAFAFA;
     --black-color: #2F3033;
-    --gray-color:  #252625; 
-    --blue-color:  #0000FF; /* Azul */
+    --gray-color:  #3A3335; 
 
     --font-family:'Roboto', sans-serif;
 }
@@ -35,7 +34,7 @@ body, html {
 }
 
 .p-button {
-    color: var(--white-color);
+    color: var(--black-color);
     background: var(--green-color);
     border: 1px solid var(--black-color);
     padding: 0.75rem 1.25rem;
@@ -46,7 +45,7 @@ body, html {
 
 .p-button:hover{
     color: var(--white-color);
-    background-color: #227040;
+    background-color: var(--green-color);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 

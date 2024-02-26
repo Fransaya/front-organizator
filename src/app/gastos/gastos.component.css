@@ -1,0 +1,118 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--black-color);
+}
+
+.container-gastos {
+    background-color: var(--white-color);
+    width: 700px;
+    max-width: 800px;
+    height: 600px;
+    max-height: 600px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.sidebar {
+    overflow-y: auto; /* Esto permite el desplazamiento vertical */
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    border-radius: 10px;
+}
+
+.table-gastos{
+    box-shadow: 0 10px 15px rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    margin: 20px; 
+    margin: 0 auto;
+    margin-bottom: 20px;
+    height: auto;
+    max-height: 400px;
+    overflow-y: auto;
+
+}
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+.container-header{
+    display:flex;
+    justify-content: center;
+}
+
+
+.t-head{
+    color: var(--black-color);
+    background-color: var(--beige-color);
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 25px;
+    margin: 10px;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.t-row-head,
+.t-row-body {
+    border-bottom: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+
+
+.th,
+.td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.t-body{
+    background-color: var(--white-color);
+}
+
+.t-row-body:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.title-gastos{
+    text-align: center;
+    
+}
+.container-btnCrear{
+    display: flex;
+    margin-left: 38%;
+    margin-bottom: 40px;
+}
+.mostrar-modal{
+    width: 160px;
+    height: 40px;
+    font-size: 20px;
+    color: black;
+    background-color: var(--green-color);
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
