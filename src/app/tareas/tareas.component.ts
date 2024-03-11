@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input } from '@angular/core';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageService } from 'primeng/api';
+import { PaginatorState } from 'primeng/paginator';
 
 
 
@@ -30,8 +31,15 @@ export class TareasComponent implements OnInit {
 
   //* ARRAYS PARA GUARDAR DATA
   public tareas:Tarea[] | any=[];
-  public tareasFinalizadas:Tarea[] | any=[];
+  public tareasPendientes:Tarea[] | any=[];
+  @Input() currentPageTasks: Tarea[] = [];
 
+  
+
+
+  first: number  = 0;
+
+  rows: number  = 3;
 
   //* array de prioridada
   prioridades=[
@@ -54,6 +62,7 @@ export class TareasComponent implements OnInit {
   ngOnInit(): void {
     this.getTareas();
     this.initForm();
+    this.tareasPendientes=this.tareasPendientes.slice(0, 3);
   };
   //* INICIALIZACION DE FORMULARIO
   public initForm(){
@@ -116,9 +125,16 @@ export class TareasComponent implements OnInit {
     return estado;
   };
   //* FILTRAR TAREAS TERMINADAS
-  public tareasTerminadas(){
-    this.tareasFinalizadas=this.tareas.filter((tarea:Tarea)=> tarea.estado==3);
+  public tareasPendientesF(){
+    this.tareasPendientes=this.tareas.filter((tarea:Tarea)=> tarea.estado==2);
+    this.currentPageTasks  = this.tareasPendientes.slice(0, 3) as Tarea[];
   };
+  //* PAGINADOR PARA TEREAS PENDIENTES
+  onPageChange(event: PaginatorState) {
+    this.first = event.first || 0;
+    this.rows = event.rows || 3;
+    this.currentPageTasks=this.tareasPendientes.slice(this.first, this.first+ this.rows)
+  }
 
   //! --------------------------------------------------- METODOS DE TAREAS --------------------------------------------
   //? --------------------------------------------------- GET TAREAS --------------------------------------------------
@@ -127,7 +143,7 @@ export class TareasComponent implements OnInit {
       this.tareaService.getTareas().subscribe({
         next:(res:any)=>{
           this.tareas=res.data;
-          this.tareasTerminadas();
+          this.tareasPendientesF();
         },
         error:(err)=>{
           console.error("Error al traer tareas", err)
@@ -205,4 +221,11 @@ export class TareasComponent implements OnInit {
         console.error("Error interno del servidor",err)
       }
     };
+};
+
+interface PageEvent {
+  first: number;
+  rows: number;
+  page: number;
+  pageCount: number;
 }

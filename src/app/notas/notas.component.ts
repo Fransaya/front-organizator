@@ -103,8 +103,13 @@ export class NotasComponent implements OnInit {
           });
           //? cuando se cierra el modal se actualizar las notas disponibles
           dialog.afterClosed().subscribe(result=>{
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Nota modificada.' });
-            this.getNotas();
+            if(result.result){
+              this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Nota modificada.' });
+              this.getNotas();
+            }else{
+              this.messageService.add({ severity: 'info', summary: 'Informacion', detail: 'No se modifico la nota.' });
+            }
+            
           })
         
       }else{

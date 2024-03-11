@@ -12,8 +12,8 @@
             <option *ngFor="let estado of estados" [ngValue]="estado.id">{{estado.nombre}}</option>
         </select>
         <div class="button-container">
-            <p-button type="submit" label="Modificar"></p-button>
-            <p-button type="button" label="Cancelar" (onClick)="cancelar()"></p-button>
+            <p-button type="submit" ><i class="pi pi-check-circle"></i></p-button>
+            <p-button type="button" (onClick)="cancelar()"> <i class="pi pi-times"></i></p-button>
         </div>
     </form>
 </div>

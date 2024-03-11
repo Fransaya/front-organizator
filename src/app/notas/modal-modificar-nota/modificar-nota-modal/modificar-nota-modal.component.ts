@@ -37,7 +37,7 @@ export class ModificarNotaModalComponent implements OnInit {
   }
   //* CERRAR MODAL AL CANCELAR (BTN)
   public cancelarNota(){
-    this.dialogRef.close();
+    this.dialogRef.close({result:false});
   }
   //! ---------------------------------------------------- PATCH NOTA ----------------------------------------------------
   public modificarNota(){
@@ -49,7 +49,7 @@ export class ModificarNotaModalComponent implements OnInit {
           next:(response)=>{
             if(response){
               this.messageService.add({ severity: 'success', summary: 'Modificada', detail: 'Nota modificada.' });
-              this.dialogRef.close();
+              this.dialogRef.close({result:true});
             }
           },  
           error:(err)=>{

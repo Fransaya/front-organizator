@@ -1,13 +1,15 @@
-
+.container-section{
+    border-radius: 20px;
+}
 .formulario {
     display: flex;
     flex-direction: column;
     width: 450px;
     height: 60%;
     overflow-y: hidden;
-    background-color: var(--green-color) !important; /* Blanco con transparencia */
+    background-color: var(--white-color) !important; 
     border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 6px 8px 12px rgba(0, 0, 0, 1);
 }
 .crear-nota-title{
     text-align: center;
@@ -23,7 +25,6 @@
     flex-direction: column;
     padding: 20px;
     margin-bottom: 10px;
-    background-color: var(--green-color);
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(1, 1, 1, 1);
     color: var(--black-color);

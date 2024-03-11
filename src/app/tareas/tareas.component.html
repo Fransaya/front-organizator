@@ -1,89 +1,120 @@
-<div class="container-task">
-    <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
-    <div class="title">
-        <h1 class="title-tareas">Tareas</h1>
-    </div>
-    <div class="content-conteiner">
-        <div class="sidebar">
-            <app-sidebar></app-sidebar>
+<section class="container-section">
+    <div class="container-task">
+        <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+        <div class="title">
+            <h1 class="title-tareas">Tareas</h1>
         </div>
-        <div class="tareas">
-            <div class="tareas-pendientes">
-                <div class="mostrarTareas">
-                    <table class="table">
-                            <thead class="t-head">
-                                <tr class="t-row-head">
-                                    <th class="th">ID</th>
-                                    <th class="th">Prioridad</th>
-                                    <th class="th">Descripción</th>
-                                    <th class="th">Estado</th>
-                                    <th class="th">Fecha Creacion</th>
-                                    <th class="th">Fecha de modificacion</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                        <tbody class="t-body">
-                            <ng-container *ngFor="let tarea of tareas">
-                                <tr *ngIf="tarea.estado < 3" class="t-row-body">
-                                    <td class="td">{{tarea.id}}</td>
-                                    <td class="td">{{convertPrioridad(tarea.prioridad)}}</td>
-                                    <td class="td">{{tarea.descripcion}}</td>
-                                    <td class="td">{{convertEstado(tarea.estado)}}</td>
-                                    <td class="td">{{formateDate(tarea.createdAt)}}</td>
-                                    <td class="td">{{formateDate(tarea.updatedAt)}}</td>
-                                    <td>
-                                        <div class="btn-acciones">
-                                            <p-button class="modificar" (onClick)="modificarTarea(tarea.id,tarea.prioridad, tarea.descripcion,tarea.estado)"><span class="pi pi-pencil"></span></p-button>
-                                            <p-button class="eliminar" (onClick)="eliminarTarea(tarea.id)"><span class="pi pi-trash"></span></p-button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="button-container">
-                    <p-button type="button" (onClick)="changeState()"><span class="pi pi-plus add-task"></span></p-button>
-                </div>
-                <div class="formTareas">
-                    <div class="form-crear-tarea"  *ngIf="ocultarModal==true">
-                        <form class="form-tarea" [formGroup]="tareaForm" (ngSubmit)="postTareas()">
-                            <label for="prioridad" class="prioridad">Prioridad</label>
-                            <select name="prioridad" id="prioridad" formControlName="prioridad">
-                                <option *ngFor="let prioridad of prioridades" [ngValue]="prioridad" >{{prioridad.nombre}}</option>
-                            </select>
-                            <label for="descripcion" class="descripcion">Descripción</label>
-                            <input type="text" name="descripcion" id="descripcion" formControlName="descripcion">
-                            <label for="estado">Estado</label>
-                            <select name="estado" id="estado" formControlName="estado">
-                                <option *ngFor="let estado of estados" [ngValue]="estado">{{estado.nombre}}</option>
-                            </select>
-                            <div class="contener-btns">
-                                <p-button type="submit" label="Crear"></p-button>
-                                <p-button type="button" label="Cancelar" (onClick)="cerrarModal()"></p-button>
+        <div class="content-conteiner">
+            <div class="sidebar">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="tareas">
+                <div class="tareas-pendientes">
+                    <div class="mostrarTareas">
+                        <table class="table">
+                                <thead class="t-head">
+                                    <tr class="t-row-head">
+                                        <th class="th">ID</th>
+                                        <th class="th">Prioridad</th>
+                                        <th class="th">Descripción</th>
+                                        <th class="th">Estado</th>
+                                        <th class="th">Fecha Creacion</th>
+                                        <th class="th">Fecha de modificacion</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            <tbody class="t-body">
+                                @for (tarea of tareas; track tarea.id) {
+                                    <ng-container>
+                                        @if (tarea.estado<3) {
+                                            <tr class="t-row-body">
+                                                <td class="td">{{tarea.id}}</td>
+                                                <td class="td">{{convertPrioridad(tarea.prioridad)}}</td>
+                                                <td class="td">{{tarea.descripcion}}</td>
+                                                <td class="td">{{convertEstado(tarea.estado)}}</td>
+                                                <td class="td">{{formateDate(tarea.createdAt)}}</td>
+                                                <td class="td">{{formateDate(tarea.updatedAt)}}</td>
+                                                <td>
+                                                    <div class="btn-acciones">
+                                                        <p-button class="modificar" (onClick)="modificarTarea(tarea.id,tarea.prioridad, tarea.descripcion,tarea.estado)"><span class="pi pi-pencil"></span></p-button>
+                                                        <p-button class="eliminar" (onClick)="eliminarTarea(tarea.id)"><span class="pi pi-trash"></span></p-button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </ng-container>
+                                }
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="button-container">
+                        <p-button type="button" (onClick)="changeState()">Crear Tarea <span class="pi pi-plus add-task"></span></p-button>
+                    </div>
+                    <div class="formTareas">
+                        @if (ocultarModal) {
+                            <div class="form-crear-tarea">
+                                <form class="form-tarea" [formGroup]="tareaForm" (ngSubmit)="postTareas()">
+                                    <label for="prioridad" class="prioridad">Prioridad</label>
+                                    <select name="prioridad" id="prioridad" formControlName="prioridad">
+                                        @for (prioridad of prioridades; track prioridad.id) {
+                                            <option  [ngValue]="prioridad" >{{prioridad.nombre}}</option>
+                                        }
+                                    </select>
+                                    <label for="descripcion" class="descripcion">Descripción</label>
+                                    <input type="text" name="descripcion" id="descripcion" formControlName="descripcion" autocomplete="off">
+                                    <label for="estado">Estado</label>
+                                    <select name="estado" id="estado" formControlName="estado">
+                                        @for (estado of estados; track estado.id) {
+                                        <option  [ngValue]="estado">{{estado.nombre}}</option>
+
+                                        }
+                                    </select>
+                                    <div class="contener-btns">
+                                        <p-button type="submit" ><i class="pi pi-check"></i></p-button>
+                                        <p-button type="button" (onClick)="cerrarModal()"><i class="pi pi-times"></i></p-button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        }
+                        
                     </div>
                 </div>
-            </div>
-            <div class="tareas-completadas">
-                <h2 class="tareas-finalizadas">Tareas Finalizadas</h2>
-                <div class="container-tareas-completas">
-                    <div *ngIf="tareasFinalizadas.length>0" class="mostrar-notas">
-                        <div *ngFor="let tarea of tareasFinalizadas" class="mostrarNotas">
-                            <p-card header="Prioridad: {{convertPrioridad(tarea.prioridad)}}" subheader="Creacion: {{formateDate(tarea.createdAt)}}" class="card-nota">
-                                <h3 class="descripcion"> Descripcion:</h3> <p class="container-descripcion">{{tarea.descripcion}}</p>
-                                <h3 class="estado">Estado: </h3> <p class="container-estado">{{convertEstado(tarea.estado)}}</p>
-                                <ng-template pTemplate="footer" class="footer-btn">
-                                    <p-button type="button" (click)="modificarTarea(tarea.id,tarea.prioridad, tarea.descripcion,tarea.estado)" label="Modificar" styleClass="p-button-success" [rounded]="true"></p-button>
-                                    <p-button type="button" (click)="eliminarTarea(tarea.id)" label="Eliminar"  styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"  [rounded]="true"></p-button>
-                                </ng-template>
-                            </p-card>
-                        </div>                
+                <div class="tareas-completadas">
+                    <h2 class="tareas-finalizadas">Tareas en Progreso</h2>
+                    <div class="container-tareas-completas">
+                        @if (tareasPendientes.length>0) {
+                            <div class="mostrar-notas">
+                                @for (tarea of currentPageTasks; track tarea.id) {
+                                    @if (currentPageTasks) {
+                                        <div  class="mostrarNotas">
+                                            <p-card header="Prioridad: {{convertPrioridad(tarea.prioridad)}}" subheader="Creacion: {{formateDate(tarea.createdAt)}}" class="card-nota">
+                                                <h3 class="descripcion"> Descripcion:</h3> <p class="container-descripcion">{{tarea.descripcion}}</p>
+                                                <h3 class="estado">Estado: </h3> <p class="container-estado">{{convertEstado(tarea.estado)}}</p>
+                                                <ng-template pTemplate="footer" class="footer-btn">
+                                                    <p-button type="button" (click)="modificarTarea(tarea.id,tarea.prioridad, tarea.descripcion,tarea.estado)" styleClass="p-button-success" [rounded]="true"><span class="pi pi-pencil"></span></p-button>
+                                                    <p-button type="button" (click)="eliminarTarea(tarea.id)"   styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"  [rounded]="true"><span class="pi pi-trash"></span></p-button>
+                                                </ng-template>
+                                            </p-card>
+                                        </div> 
+                                    }@else {
+                                        <div class="mostrarNotas">
+                                            <h3 class="title-no-tareas">No hay Tareas.</h3>
+                                        </div>
+                                    }
+                                    
+                                };
+                            </div>
+                            @defer () {
+                                <div class="paginador">
+                                    <p-paginator [totalRecords]="tareasPendientes.length" (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="50" [rowsPerPageOptions]="[3, 5, 10]"></p-paginator>
+                                </div> 
+                            }
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-</div>
+</section>
+
