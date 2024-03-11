@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { formatCurrency, getCurrencySymbol } from '@angular/common';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import moment from 'moment';
-import { MatDialog, matDialogAnimations } from '@angular/material/dialog';
+import { MatDialog,  } from '@angular/material/dialog';
 import { MessageService } from 'primeng/api';
-import { TableModule } from 'primeng/table';
 
 
 //? SERVICIO DE GASTO
@@ -38,9 +38,7 @@ export class GastosComponent implements  OnInit {
    //* ARRAY PARA GASTOS
   public gastos: Gastos[] | any= [];
 
-  private idGasto:number=0;
-
-  private latestDateFormExpense={};
+  visible: boolean = false;
 
   mostrarGasto=false;
 
@@ -64,37 +62,115 @@ export class GastosComponent implements  OnInit {
     const fechaFormateada = moment(date).format('DD-MM-YYYY');
     return fechaFormateada;
   };
-
-  public changeState(parameter:number,id:number,datos:any){
-    if(parameter===1){
-      this.mostrarGasto=true;
-    }else if(parameter===2){
-      this.mostrarModificar=true;
-      this.idGasto=id;
-      this.latestDateFormExpense=datos;
-      this.completarForm(datos);
-      
+  //* FORMATEO DE MONTO DINERO
+  public formatDinner(monto:number):any{
+    let amoutn;
+    if(monto){
+      amoutn=formatCurrency(monto,'en-US', getCurrencySymbol('ARS $','wide'));
+      return amoutn
     }
-    
-  };
-
-  public cerrarModal(paramer:number){
-    if(paramer===1){
-      this.mostrarGasto=false;
-    }else{
-      this.mostrarModificar=false;
-    }
-  };
-
-   //* RELLENA EL FORMULARIO CON LOS DATOS OBTENIDOS EN DATA
-  private completarForm(data:any){
-    this.gastoForm.controls['categoria'].setValue(data.categoria);
-    this.gastoForm.controls['descripcion'].setValue(data.descripcion);
-    this.gastoForm.controls['monto'].setValue(data.monto);
-    this.gastoForm.controls['fecha_gasto'].setValue(data.fecha_gasto);
-  };
-
+  }
   
+
+  //* FILTRO DE DATOS
+  public filterDate(event:any,idEvent:number){
+    switch (idEvent){
+      case 1:{ //todo filtro por categoria tabla
+        let categoriaInput=event.target.value;
+        if(categoriaInput){
+        this.filterCategoria(categoriaInput)
+        }else if(categoriaInput===""){
+          this.getGastos();
+        }
+        break;
+      }
+      case 2:{ //todo filtro por precio (mayor-menor)
+        let valueInput= event.target.previousElementSibling.value //todo obtengo fechas del envento previo
+        let valorSelect= event.target.value;
+        if(valueInput && valorSelect){
+          this.filterPrice(valueInput,valorSelect); 
+        }else if(valueInput==""){
+          this.getGastos()
+        }
+        break;
+      }
+      case 3:{ //todo filtro por fecha
+        let dateValue=event.target.value;
+        if(dateValue){
+          this.filterDateTable(dateValue);
+        }else if(dateValue==""){
+          this.getGastos()
+        }
+        break;
+      }
+      default:{
+        let inputCategoria = document.querySelector('#filter-categoria') as HTMLInputElement;
+        let inputImporte = document.getElementById('filter-precio') as HTMLInputElement;
+        let inputDate = document.getElementById('filter-date') as HTMLInputElement;
+        if(inputCategoria){
+          inputCategoria.value=""
+        }
+        if(inputImporte){
+          inputImporte.value=""
+        }
+        if(inputDate){
+          inputDate.value=""
+        }
+        this.getGastos();
+      }
+    }
+  };
+  //* METODO FILTER POR CATEGORIA
+  public filterCategoria(catInput:string){
+    this.gastos=this.gastos.filter((val:any)=>{
+      if(val.categoria.toLowerCase().includes(catInput)){
+        return val.categoria
+      }
+    })
+    
+  }
+  //* METODO FILTER X PRECIO
+  private filterPrice(valNum:number, typeFilter:string):void{
+    if(typeFilter=="mayor"){
+      this.gastos=this.gastos.filter((val:any)=>{
+        if(val.monto>=valNum){
+          return val.monto;
+        }
+      })
+    }else{
+      this.gastos=this.gastos.filter((val:any)=>{
+        if(val.monto<=valNum){
+          return val.monto
+        }
+      })
+    }
+  };
+  //* METODO FILTER X FECHA
+  public filterDateTable(dateSelect:Date){
+    this.gastos=this.gastos.filter((val:any)=>{
+      if(val.fecha_gasto==dateSelect){
+        return val.fecha_gasto
+      }
+    })
+  };
+
+  //* METODO OBTENER TOTAL GASTOS
+  public getTotalGastos():any{
+    let valInputGasto=document.querySelector('#val-gastos') as HTMLInputElement;
+    let totalGastos:number=0;
+    console.log("se esta llamadno")
+    if(this.gastos.length>0){
+      this.gastos.forEach((val:any) => {
+        totalGastos+= Number(val.monto);
+      });
+      totalGastos= this.formatDinner(totalGastos);
+      valInputGasto.value= totalGastos.toString();
+    }else{
+      valInputGasto.value="";
+    }
+  }
+
+
   
 
   //! ------------------------------------------------- METODOS GASTOS -------------------------------------------------
@@ -104,7 +180,7 @@ export class GastosComponent implements  OnInit {
         this.gastosServices.getGastos().subscribe({
           next:(res:any)=>{
             this.gastos=res.data;
-            console.log("gastos", this.gastos)
+            this.getTotalGastos();
           },
           error:(err)=>{
             this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error al obtener gastos.' });
@@ -121,10 +197,8 @@ export class GastosComponent implements  OnInit {
       const dialog=this.dialog.open(ModalCreateGastoComponent);
       //? cuando se cierra el modal se actualizar las notas disponibles
       dialog.afterClosed().subscribe(result=>{
-        console.log("resultado devuelto",result);
         if(result.success){
           let categoria=result.data.categoria;
-          console.log("categoria obtenida",categoria)
           let descripcion=result.data.descripcion;
           let monto=result.data.monto;
           let fecha_gasto=result.data.fecha_gasto;
@@ -149,16 +223,18 @@ export class GastosComponent implements  OnInit {
   //? ------------------------------------------------- PATCH GASTO -------------------------------------------------
   public modificarGasto(id:number,categoria:string,descripcion:string,monto:number,fecha_gasto:Date){ 
     try{
+      //todo defino json para anviar datos
       const datos={
         categoria,
         descripcion,
         monto,
         fecha_gasto
-      }
+      } 
+      //todo abri el modal y envio datos
       const dialog=this.dialog.open(ModalModificarGastoComponent,{
         data:datos
       });
-
+      //todo una vez cerrado
       dialog.afterClosed().subscribe(result =>{
         if(result.success){
           let gastoId=id;
@@ -186,7 +262,6 @@ export class GastosComponent implements  OnInit {
   };
   //? ------------------------------------------------- DELETE GASTO -------------------------------------------------
   public deleteGasto(gastoId:number){
-    console.log("id recibido", gastoId)
     try{
       this.gastosServices.deleteGasto(gastoId).subscribe({
         next:(res)=>{
@@ -201,6 +276,40 @@ export class GastosComponent implements  OnInit {
     }catch(err){
       console.error("Error interno del servidor", err)
     }
+  }
+  //? ------------------------------------------------- DELETE ALL GASTOS ----------------------------------------------
+  public showDeleteAll(){
+    if(!this.visible){
+      this.messageService.add({ key: 'confirm', sticky: true, severity: 'warn', summary: 'Desea eliminar todos los gastos' });
+      this.visible=true
+    }
+  }
+
+  deleteAllGastos() {
+    this.messageService.clear('confirm');
+    console.log("entro aca")
+    try{
+      this.gastosServices.deleteAll().subscribe({
+        next:(res)=>{
+          this.messageService.add({ severity: 'success', summary: 'Gasto', detail: 'Se eliminaron todos los gastos.' });
+          this.getGastos();
+
+        },
+        error:(err)=>{
+          console.error("No se elliminar los gasots")
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No eliminaron todos los gastos.' });
+        }
+      })
+    }catch(err){
+      console.error("Error interno del servidor")
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo eliminar todos los gastos.' });
+    }
+    this.visible = false;
+  }
+
+candelDellGastos() {
+    this.messageService.clear('confirm');
+    this.visible = false;
   }
 
 

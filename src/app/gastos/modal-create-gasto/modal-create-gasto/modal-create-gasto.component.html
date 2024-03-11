@@ -13,15 +13,16 @@
             </div>
             <div class="form-group">
                 <label for="importe" class="label-importe">Monto</label>
-                <input type="number" id="importe" class="input-number" formControlName="monto" autocomplete="off">
+                <!-- <input type="number" id="importe" class="input-number" formControlName="monto" autocomplete="off"> -->
+                <p-inputNumber  inputId="currency-us" mode="currency" currency="USD" class="input-number" locale="en-US" formControlName="monto" autocomplete="off"> </p-inputNumber>
             </div>
             <div class="form-group">
                 <label for="fecha_gasto" class="label-fecha">Fecha</label>
                 <input type="date" id="fecha_gasto" class="input-date" formControlName="fecha_gasto" autocomplete="off">
             </div>
             <div class="container-btn-create">
-                <p-button type="submit" label="Crear"></p-button>
-                <p-button type="button" label="Cancelar" (onClick)="cancelarGasto()"></p-button>
+                <p-button type="submit" ><i class="pi pi-check-circle"></i></p-button>
+                <p-button type="button" (onClick)="cancelarGasto()"><i class="pi pi-times"></i></p-button>
             </div>
         </form>
         </div>

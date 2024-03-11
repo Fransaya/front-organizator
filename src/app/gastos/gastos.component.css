@@ -1,3 +1,4 @@
+
 .container {
     display: flex;
     justify-content: center;
@@ -5,6 +6,107 @@
     height: 100vh;
     background-color: var(--black-color);
 }
+
+.filtros-container{
+    display: flex;
+    width: 350px;
+    background-color: var(--white-color);
+    border-radius: 15px;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    left: 7%;
+}
+
+.title-filter{
+    position: relative;
+    justify-content: center;
+}
+
+.filtro-categoria input,
+.filtro-precio input,
+.filtro-fecha input {
+    font-family: sans-serif; /* Use a clean sans-serif font */
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ccc; /* Use a subtle border color */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    background-color: transparent; /* Transparent background for a sleek look */
+}
+
+.filtro-categoria input,
+.filtro-fecha input{
+    margin-right: 15px;
+    width: 90%;
+}
+
+.filtro-fecha input{
+    width: 220px;
+    margin-left: 30px;
+}
+
+.filtro-precio input{
+    width: 40%;
+    margin-left: 20px;
+}
+
+.filtro-precio select {
+        margin-left: 5px;
+        margin-bottom: 8px;
+        font-family: sans-serif;
+        font-size: 16px;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px 12px;
+        background-color: #fff;
+        appearance: none; /* Elimina el estilo por defecto */
+        -webkit-appearance: none; /* Safari */
+        -moz-appearance: none; /* Firefox */
+}
+  /* Estilos al enfocar el input o el selector */
+.filtro-precio input:focus,
+.filtro-precio select:focus {
+    border-color: #999;
+    outline: none;
+}
+
+.filtro-categoria input:focus,
+.filtro-precio input:focus,
+.filtro-fecha input:focus {
+    border-color: #999;
+    outline: none; /* Remove default outline */
+}
+
+.filtro-categoria,
+.filtro-precio,
+.filtro-fecha {
+    display: flex;
+    align-items: center;
+}
+
+.filtro-categoria::before{
+  content: "Categoría: ";  /* Change labels as needed */
+    margin-right: 10px;
+    font-weight: bold;
+}
+.filtro-precio::before{
+    content: "Importe: ";  /* Change labels as needed */
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.filtro-fecha::before {
+    content: "Fecha: ";  /* Change labels as needed */
+    margin-right: 10px;
+    font-weight: bold;
+}
+
 
 .container-gastos {
     background-color: var(--white-color);
@@ -48,8 +150,8 @@
 
 
 .t-head{
-    color: var(--black-color);
-    background-color: var(--beige-color);
+    color: var(--white-color);
+    background-color: var(--detail-color);
     justify-content: center;
     text-align: center;
     font-size: 16px;
@@ -97,8 +199,8 @@
     width: 160px;
     height: 40px;
     font-size: 20px;
-    color: black;
-    background-color: var(--green-color);
+    color: white;
+    background-color: var(--detail-color);
     border-radius: 15px;
     cursor: pointer;
 
@@ -114,5 +216,81 @@
     padding: 20px;
     border-radius: 10px;
 }
+
+.resumen-gastos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--detail-color);
+    color: white;
+}
+
+.container-resumen{
+    margin-bottom: 10px;
+}
+
+.title-gasto-resumen{
+    font-size: 16px;
+    font-family: var(--font-family);
+}
+
+#val-gastos {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 16px;
+    width: 200px;
+    text-align: center;
+}
+
+
+#val-gastos[readonly] {
+    background-color: #f7f7f7;
+    cursor: not-allowed;
+}
+
+#val-gastos::placeholder {
+    color: #ccc;
+}
+
+label[for="val-gastos"] {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.delete-all-gastos{
+    margin-bottom: 10px;
+}
+
+.delete-all {
+    background-color: #ff4444;
+    color: #fff;
+    border: 1px solid #ff0000;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete-all:hover {
+    background-color: #dd3333;
+    border-color: #bb0000;
+}
+
+.filter-input{
+    display: flex;
+    width: 150px !important;
+    margin-bottom: 8px;
+}
+
+.select-filter-precio{
+    z-index: 2;
+}
+
+
+
 
 

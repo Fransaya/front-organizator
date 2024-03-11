@@ -36,7 +36,7 @@
     display: block;
     margin-bottom: 5px;
 }
-.input-text, .input-number, .input-date {
+.input-text,  .input-date {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
@@ -44,6 +44,8 @@
 }
 .input-number {
     text-align: right;
+    width: 250px;
+    border-radius: 4px;
 }
 
 

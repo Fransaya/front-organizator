@@ -6,7 +6,7 @@
             <app-sidebar></app-sidebar>
         </div>
         <div class="container-btnCrear">
-            <button type="button" class="mostrar-modal" (click)="postGasto()"><span class="pi pi-plus add-task"></span></button>
+            <button type="button" class="mostrar-modal" title="Crear nuevo gasto" (click)="postGasto()"><span class="pi pi-plus add-task"></span> Crear</button>
         </div>
         <div class="table-gastos" >
             <table class="table">
@@ -21,21 +21,61 @@
                     </tr>
                 </thead>
                 <tbody class="tbody">
-                    <ng-container *ngFor="let gasto of gastos" class="ng-conteiner">
-                        <tr class="t-row-body">
-                            <td class="td">{{gasto.categoria}}</td>
-                            <td class="td">{{gasto.descripcion}}</td>
-                            <td class="td">{{gasto.monto}}</td>
-                            <td class="td">{{gasto.fecha_gasto}}</td>
-                            <td class="td"><p-button class="modificar" (onClick)="modificarGasto(gasto.id,gasto.categoria,gasto.descripcion,gasto.monto,gasto.fecha_gasto)"><span class="pi pi-pencil"></span></p-button></td>
-                            <td class="td"><p-button class="eliminar" (onClick)="deleteGasto(gasto.id)"><span class="pi pi-trash"></span></p-button></td>
-                        </tr>
-                    </ng-container>
+                    @for (gasto of gastos; track gasto.id) {
+                        <ng-container class="ng-conteiner">
+                            <tr class="t-row-body">
+                                <td class="td">{{gasto.categoria}}</td>
+                                <td class="td">{{gasto.descripcion}}</td>
+                                <td class="td">{{formatDinner(gasto.monto)}}</td>
+                                <td class="td">{{formateDate(gasto.fecha_gasto)}}</td>
+                                <td class="td"><p-button class="modificar" title="Modificar Gasto" (onClick)="modificarGasto(gasto.id,gasto.categoria,gasto.descripcion,gasto.monto,gasto.fecha_gasto)"><span class="pi pi-pencil"></span></p-button></td>
+                                <td class="td"><p-button class="eliminar" title="Eliminar gastos" (onClick)="deleteGasto(gasto.id)"><span class="pi pi-trash"></span></p-button></td>
+                            </tr>
+                        </ng-container>
+                    }
                 </tbody>
             </table>
+            <div class="resumen-gastos">
+                <h3 class="title-resumen">Resumen Gastos</h3>
+                <div class="container-resumen">
+                    <label for="gasto" class="title-gasto-resumen">Total Gastos: </label>
+                    <input type="string" value="0" id="val-gastos" placeholder="$ Monto de gastos" readonly>
+                </div>
+                <div class="delete-all-gastos">
+                    <button type="button" title="Eliminar todos los gastos" (click)="showDeleteAll()" class="delete-all"><i class="fas fa-trash-can"></i></button>
+                </div>
+            </div>
         </div>
         
     </div>
+    <div class="filtros-container">
+        <h2 class="title-filter">Filtros</h2>
+        <div class="filtro-categoria">
+            <input type="text" name="filter-cat" id="filter-categoria" (keyup)="filterDate($event,1)">
+        </div>
+        <div class="filtro-precio">
+            <input type="number"  name="filter-precio" id="filter-precio" >
+            <select name="option-precio" id="option-precio" (change)="filterDate($event,2)" class="select-filter-precio">
+                <option value="">...</option>
+                <option value="menor">Menor</option>
+                <option value="mayor">Mayor</option>
+            </select>
+        </div>
+        <div class="filtro-fecha">
+            <input type="date" name="filter-date" id="filter-date" (change)="filterDate($event,3)">
+        </div>
+        <div class="btn-clear">
+            <p-button class="vaciar-filter" title="Vaciar filtros" (onClick)="filterDate($event,4)"><i class="pi pi-filter-slash"></i></p-button>
+        </div>
+    </div>
+    <p-toast position="bottom-center" key="confirm" (onClose)="candelDellGastos()" [baseZIndex]="5000">
+        <ng-template let-message pTemplate="message">
+            <div class="flex flex-column align-items-start" style="flex: 1">
+                <div class="font-medium text-lg my-3 text-900">{{ message.summary }}</div>
+                <p-button class="btn-del-all" label="Eliminar" (click)="deleteAllGastos()"></p-button>
+            </div>
+        </ng-template>
+    </p-toast>
     
 
 </section>

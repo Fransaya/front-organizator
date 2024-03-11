@@ -35,11 +35,11 @@ export class ModalCreateGastoComponent implements OnInit {
 
   //* CIERRO MODAL
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close({success:false});
   }
   //* CERRAR MODAL AL CANCELAR (BTN)
   public cancelarGasto(){
-    this.dialogRef.close();
+    this.dialogRef.close({success:false});
   }
 
   //? ------------------------------ ENVIAR GATOS A COMPONENTE PRINCIPAL
