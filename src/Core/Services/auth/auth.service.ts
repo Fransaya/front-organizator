@@ -55,7 +55,13 @@ export class AuthService {
 
   isLogguedIn():boolean{
     const token=localStorage.getItem('token');
+    console.log("token obtenido", token)
     return !token;
   };
+
+  removeToken():boolean{
+    const tokenDel=localStorage.removeItem('token');
+    return true;
+  }
 
 }

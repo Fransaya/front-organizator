@@ -31,4 +31,5 @@ export enum endopoint {
     postGasto='/gastos/postGastos',
     updateGasto='/gastos/patchGastos',
     deletGasto='/gastos/deleteGastos',
+    deleteAllGastos='/gastos/deleteAllGastos',
 };

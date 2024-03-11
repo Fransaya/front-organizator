@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { endopoint } from '../../../env/environment';
 import { environment } from '../../../env/url_server';
 import { AuthService } from '../auth/auth.service';
-import { UrlHandlingStrategy } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +48,13 @@ export class GastosService {
     const params= new HttpParams().set("gastoId",id);
 
     return this.http.delete(url_server,{params});
+  }
+
+  public deleteAll(){
+    const url_server= environment.apiUrl + endopoint.deleteAllGastos;
+
+    const options={headers: this.authService.obtenerHears()};
+
+    return this.http.delete(url_server,options)
   }
 }

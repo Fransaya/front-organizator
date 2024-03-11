@@ -18,12 +18,20 @@
     /* * COLORES PRINCIPALES APLICACION*/
     --green-color: #C6D8D3;
     --beige-color: #C6D8D3;
+    /* --white-color:#FAFAFA; */
+    /* --white-color:#e3e4db; */
+    /* --black-color: #4a5759; */
+    /* --black-color: #2F3033; */
+    --gray-color:  #3A3335; 
+    --font-family:'Roboto', sans-serif;
+
     --white-color:#FAFAFA;
     --black-color: #2F3033;
-    --gray-color:  #3A3335; 
-
-    --font-family:'Roboto', sans-serif;
+    --white-beige: #e6d38e;
+    --detail-color: #227050;
 }
+
+/* --black-color: #2F3033; */
 
 body, html {
     margin: 0;
@@ -34,8 +42,8 @@ body, html {
 }
 
 .p-button {
-    color: var(--black-color);
-    background: var(--green-color);
+    color: var(--white-color);
+    background-color: var(--detail-color);
     border: 1px solid var(--black-color);
     padding: 0.75rem 1.25rem;
     font-size: 1rem;
@@ -45,9 +53,10 @@ body, html {
 
 .p-button:hover{
     color: var(--white-color);
-    background-color: var(--green-color);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    background-color: var(--detail-color);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
 }
+
 
 /* 
 Verde Medio Oscuro (principal): #006400
