@@ -1,1 +1,60 @@
-<p>calendario works!</p>
+<main class="main-container">
+    <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+    <section class="container-section">
+        <div class="sidebar">
+            <app-sidebar></app-sidebar>
+        </div>
+    <h1 class="title-page">Calendario</h1>
+        <div class="container-gastos">
+            <div class="container-mostrar-gastos">
+                <div class="card m:flex xl:justify-content-center container-card">
+                    <p-orderList [value]="evento" [listStyle]="{ 'max-height': '500px', 'max-width':'500px'}"  header="Fechas" [dragdrop]="true" class="order-list">
+                        <ng-template let-event pTemplate="item">
+                            <div class="flex flex-wrap p-2 align-items-center gap-2'">
+                                <div class="flex-1 flex flex-column gap-1">
+                                    <h3 class="font-bold"><b>{{ event.titulo }}</b></h3><hr>
+                                    <div class="flex align-items-center gap-2">
+                                        <span><b>Descripción: </b>{{ event.descripcion }}</span><br>
+                                        <span><b>Fecha: </b>{{event.fecha_seleccionada}}</span>
+                                    </div>
+                                </div>
+                                <div class="container-btn">
+                                    <footer class="footer-container">
+                                        <p-button (onClick)="Evento(2,{id:event.id, titulo:event.titulo,descripcion: event.descripcion,fecha_seleccionada:event.fecha_seleccionada})"><span class="pi pi-pencil"></span></p-button>
+                                        <p-button (onClick)="deleteEvent(event.id)"><span class="pi pi-trash"></span></p-button>
+                                    </footer>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-orderList>
+                </div>
+                
+            </div>
+            <div class="create-evento">
+                <div class="container-form">
+                    <h2>{{ eventSeleccionada === 1 ? 'Crear nuevo evento' : 'Modificar Evento' }}</h2>
+                    <form [formGroup]="eventoForm" class="form-evento" (ngSubmit)="Evento(eventSeleccionada, {})">
+                        <div class="form-group">
+                            <label for="fecha">Fecha evento</label>
+                            <input type="date" name="fecha_seleccionada" id="fecha_seleccionada" formControlName="fecha_seleccionada" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="titulo">Título</label>
+                            <input type="text" name="titulo" id="titulo" formControlName="titulo" autocomplete="off">
+                        </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <input type="text" name="descripcion" id="descripcion" formControlName="descripcion" autocomplete="off">
+                            </div>
+                            <div class="container-btn-create">
+                                <p-button type="submit">Crear<i class="pi pi-check-circle circle"></i></p-button>
+                                <p-button type="button" (onClick)="cancelEvent(eventSeleccionada)">Cancelar<i class="pi pi-times cancel"></i></p-button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</main>

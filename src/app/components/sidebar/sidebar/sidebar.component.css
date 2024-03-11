@@ -16,6 +16,15 @@
   
 }
 
+.sidebar {
+  transition: transform 0.3s ease-in-out; /* Ajusta la duración y la función de temporización según sea necesario */
+}
+
+
+.sidebar.collapsed {
+  transform: translateX(-100%); /* Ajusta el ancho según el ancho de tu barra lateral */
+}
+
 .expanded {
   width: 150px; /* Ancho expandido de la barra lateral */
 }
@@ -62,4 +71,15 @@ span{
 :not(.expanded) button span {
   
   display: none;
+}
+
+.logout-btn{
+  margin-top: 15px;
+  padding: 10px;
+  width: 80px;
+  background-color: var(--white-color);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

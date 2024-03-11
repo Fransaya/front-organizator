@@ -1,11 +1,12 @@
 <section>
     <div class="sidebar" >
-        <button (click)="routerTo('/dashboard')"><i class="fa-solid fa-house"></i><span>Inicio</span></button>
-        <button (click)="routerTo('/calendario')"><i class="fas fa-calendar-days"></i><span>Calendario</span></button>
-        <button (click)="routerTo('/notas')"><i class="fas fa-sticky-note"></i><span>Notas</span></button>
+        <button (click)="routerTo('/calendario')"><i class="fa-regular fa-calendar-days"></i><span>Calendario</span></button>
+        <button (click)="routerTo('/notas')"><i class="fa-solid fa-pen"></i><span>Notas</span></button>
         <button (click)="routerTo('/tareas')"><i class="fas fa-tasks"></i><span>Tareas</span></button>
-        <button (click)="routerTo('/gastos')"> <i class="fas fa-money-bill"></i><span>Gastos</span></button>
-        
+        <button (click)="routerTo('/gastos')"> <i class="fa-solid fa-dollar-sign"></i><span>Gastos</span></button>
+    </div>
+    <div class="logout-btn">
+        <button (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
     </div>
 </section>
 
