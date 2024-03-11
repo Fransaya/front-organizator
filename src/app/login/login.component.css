@@ -14,7 +14,7 @@ html, body {
         justify-content: center;
         width: 100%;
         height: 100vh;
-        background-color: var(--gray-color);
+        background-color: var(--black-color);
         font-family: var(--font-family);
     }
 
@@ -24,9 +24,9 @@ html, body {
         align-items: center;
         width: 800px;
         margin-top: 20px;
-        background-color: var(--green-color);
+        background-color: var(--detail-color);
         border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
     }
     .centered-form {
         /* Ajusta estos valores según tus necesidades */
@@ -34,6 +34,8 @@ html, body {
         max-width: 600px;
         justify-content: center;
         align-items: center;
+        background-color: var(--black-color);
+        color: var(--white-color);
     }
     .img-logo {
         text-align: center;
@@ -60,7 +62,7 @@ html, body {
         margin: 30px;
         text-align: center;
         margin: 20px;
-        color: var(--black-color);
+        color: var(--white-color);
     }
     
     .inicio-sesion{
@@ -68,17 +70,26 @@ html, body {
         font-weight: bold;
         text-transform: uppercase;
     }
+
+    .login{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+    }
     
     .custom-form {
-        min-width: 400px;
+        min-width: 500px;
         max-width: 600px;
-        padding: 2rem 2rem;
+        padding: 2rem 3rem;
+        justify-content: center;
+        align-items: center;
         margin: auto;
         border-radius: 10px;
         color: black;
         overflow: hidden;
         position: relative;
-        background-color: rgba(250, 250, 250, 0.7);
+        /* background-color: rgba(250, 250, 250, 0.1); */
         border: none;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -92,27 +103,35 @@ html, body {
         left: 0;
         z-index: -1;
     }
+
     
     .custom-form input {
-        display: block;
         margin-bottom: 1rem;
-        margin: 0 auto 1rem; /* Centrado vertical y margen inferior ajustado */
-        width: calc(100% - 2rem);
-        border-radius: 0.5rem;
+        margin: 0 auto 1rem; 
+        width: 100%;
+        border-radius: 10px;
         padding: 1rem;
-        background: #ebf5fc;
-        background-color: var(--beige-color);
         border: none;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-    
-    
-    
-    .large-input .mat-form-field-label-wrapper {
-        padding-top: 1.25em;
+
+    .input-group{
+        color: var(--black-color);
+    }
+
+    .icons{
+        position: relative;
+        margin-right: 15px;
+        margin-top: 15px;
     }
     
+    .btn-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .custom-form button {
+        
         text-transform: uppercase;
         letter-spacing: 0.15em;
         border: none;
@@ -129,37 +148,15 @@ html, body {
     
     button[type="submit"],
     .register-btn {
-        background-color: var(--green-color);
+        background-color: var(--detail-color);
         color: var(--white-color);
     }
     
     button[type="submit"]:hover,
     .register-btn:hover {
-        background-color: var(--black-color);
+        background-color: var(--white-color);
+        color: black;
     }
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .invalid-input {
+        border-color: #ff0000; /* Red border for invalid input */
+    }

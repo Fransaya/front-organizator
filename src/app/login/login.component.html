@@ -1,22 +1,25 @@
 <div class="container">
     <div class="img-logo">
-        <img src="../../assets/imagen logotipes.jpg" alt="organizator">
+        <!-- <img src="../../assets/imagen logotipes.jpg" alt="organizator"> -->
     </div>
     <div class="container-login">
+        <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
         <mat-card class="centered-form">
             <mat-card-header><mat-card-title><h2 class="title">Organizator</h2></mat-card-title></mat-card-header>
             <mat-card-content>
                 <div class="login">
                     <form class="custom-form"  [formGroup]="loginForm" (ngSubmit)="LoginUser()">
-                        <mat-form-field appearance="fill" class="input large-input">
-                            <mat-label>Email</mat-label>
-                            <input matInput type="email" formControlName="usu_correo" name="email" required>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill" class="input large-input">
-                            <mat-label>Contraseña</mat-label>
-                            <input matInput type="password" formControlName="usu_contraseña" name="contraseña" required>
-                        </mat-form-field>
-                        <mat-card-actions><button type="submit" >Iniciar Sesión</button>
+                        <p-inputGroup class="input-group" [ngClass]="{ 'invalid-input': loginForm.get('usu_correo')?.invalid && (loginForm.get('usu_correo')?.touched || loginForm.get('usu_correo')?.dirty) }">
+                            <i class="pi pi-envelope icons"></i>
+                            <input pInputText placeholder="Email" type="email" formControlName="usu_correo" name="email" required  />
+                            
+                        </p-inputGroup>
+                        <p-inputGroup class="input-group" [ngClass]="{ 'invalid-input': loginForm.get('usu_contraseña')?.invalid && (loginForm.get('usu_contraseña')?.touched || loginForm.get('usu_contraseña')?.dirty) }">
+                            <i class="pi pi-lock icons"></i>
+                            <input pInputText placeholder="Contraseña" type="password" formControlName="usu_contraseña" name="contraseña" required />
+                        </p-inputGroup>
+                        <mat-card-actions class="btn-container">
+                            <button type="submit" >Iniciar Sesión</button>
                             <button class="register-btn" type="button" (click)="register()">Registrar</button>
                         </mat-card-actions>
                     </form>

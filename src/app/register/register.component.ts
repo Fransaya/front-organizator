@@ -7,6 +7,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { CommonModule, NgIf } from '@angular/common';
 
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+
 //? SERVICIO DE AUTHENTICACION
 import { AuthService } from '../../Core/Services/auth/auth.service';
 
@@ -16,7 +19,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   standalone:true,
-  imports:[CommonModule,FormsModule,ReactiveFormsModule,NgIf],
+  imports:[CommonModule,FormsModule,ReactiveFormsModule,NgIf,InputGroupModule,InputGroupAddonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -41,7 +44,7 @@ export class RegisterComponent {
             if(res.succes){
               localStorage.setItem('token',res.data.token);
               localStorage.setItem('session',res.data.userId);
-              this.route.navigate(['dashboard']);
+              this.route.navigate(['calendario']);
             }else{
               Swal.fire("Error","Succedio un error al registrarse", "error");
             }
