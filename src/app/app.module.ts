@@ -10,7 +10,6 @@ import { AuthInterceptor } from '../Core/Services/GetToken/auth.interceptor';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 import { NotasComponent } from './notas/notas.component';
@@ -21,13 +20,17 @@ import { DataViewModule } from 'primeng/dataview';
 import { CardModule } from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
 import { ModificarNotaModalComponent } from './notas/modal-modificar-nota/modificar-nota-modal/modificar-nota-modal.component';
 import { ModificarTareaModalComponent } from './tareas/modal-modificar-tarea/modificar-tarea-modal/modificar-tarea-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ToastModule } from 'primeng/toast';
 import { ModalCreateGastoComponent } from './gastos/modal-create-gasto/modal-create-gasto/modal-create-gasto.component';
 import { ModalModificarGastoComponent } from './gastos/modal-modificar-gasto/modal-modificar-gasto/modal-modificar-gasto.component';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { OrderListModule } from 'primeng/orderlist';
+import { PanelModule } from 'primeng/panel';
+import { CalendarModule } from 'primeng/calendar';
 
 
 
@@ -35,7 +38,6 @@ import { ModalModificarGastoComponent } from './gastos/modal-modificar-gasto/mod
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     SidebarComponent,
     CalendarioComponent,
     NotasComponent,
@@ -57,7 +59,12 @@ import { ModalModificarGastoComponent } from './gastos/modal-modificar-gasto/mod
     ButtonModule,
     MatDialogModule,
     ToastModule,
-    TableModule
+    TableModule,
+    PaginatorModule,
+    MatFormFieldModule,
+    OrderListModule,
+    PanelModule,
+    CalendarModule
   ],
   providers: [
     {
